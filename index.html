@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Ravi Prakash — Senior Java + Liferay DXP Consultant with 6+ years building enterprise-grade microservices and portals" />
+<title>Ravi Prakash — Senior Java + Liferay DXP Consultant</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          ink: { 50:'#f8f9fb', 100:'#eef0f4', 200:'#d9dde5', 300:'#b9c0cd', 400:'#8c95a8', 500:'#5f6b82', 600:'#404a5e', 700:'#2a3344', 800:'#1a212f', 900:'#0d1220', 950:'#060812' },
+          brand: { 50:'#eef4ff', 100:'#dbe6fe', 200:'#bfd1fe', 300:'#93b3fd', 400:'#608bfa', 500:'#3b67f6', 600:'#2447ec', 700:'#1d35d8', 800:'#1e2faf', 900:'#1d2c8a', 950:'#161e54' },
+          accent: { 400:'#22d3ee', 500:'#06b6d4', 600:'#0891b2' },
+        },
+        animation: {
+          'float': 'float 6s ease-in-out infinite',
+          'gradient': 'gradient 8s ease infinite',
+          'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          'spin-slow': 'spin 20s linear infinite',
+          'scroll': 'scroll 30s linear infinite',
+        },
+        keyframes: {
+          float: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-20px)' } },
+          gradient: { '0%,100%': { 'background-position': '0% 50%' }, '50%': { 'background-position': '100% 50%' } },
+          scroll: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: #060812; color: #eef0f4; overflow-x: hidden; }
+
+  /* Animated gradient background */
+  .gradient-bg {
+    background: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(59, 103, 246, 0.25), transparent),
+                radial-gradient(ellipse 60% 50% at 80% 50%, rgba(34, 211, 238, 0.15), transparent),
+                radial-gradient(ellipse 60% 50% at 20% 80%, rgba(120, 80, 220, 0.15), transparent);
+  }
+
+  /* Glow effect */
+  .glow { box-shadow: 0 0 80px rgba(59, 103, 246, 0.3); }
+  .glow-cyan { box-shadow: 0 0 60px rgba(34, 211, 238, 0.25); }
+
+  /* Glass card */
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .glass:hover { border-color: rgba(59, 103, 246, 0.4); background: rgba(255, 255, 255, 0.05); }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #608bfa 0%, #22d3ee 50%, #c084fc 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient 8s ease infinite;
+  }
+
+  /* Grid pattern */
+  .grid-pattern {
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: #060812; }
+  ::-webkit-scrollbar-thumb { background: #2a3344; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #404a5e; }
+
+  /* Custom utilities */
+  .text-balance { text-wrap: balance; }
+  .marquee { animation: scroll 30s linear infinite; }
+  .marquee:hover { animation-play-state: paused; }
+
+  /* Noise texture overlay */
+  .noise::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  }
+
+  .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  .skill-card { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+  .skill-card:hover { transform: translateY(-4px); }
+
+  .project-card { transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+  .project-card:hover { transform: translateY(-6px) scale(1.01); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body class="bg-ink-950 text-ink-50">
+
+<!-- Navigation -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#home" class="font-bold text-lg tracking-tight flex items-center gap-2">
+      <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 flex items-center justify-center text-white font-black text-sm">RP</span>
+      <span class="hidden sm:inline">Ravi Prakash</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-ink-300">
+      <a href="#about" class="hover:text-white transition">About</a>
+      <a href="#skills" class="hover:text-white transition">Skills</a>
+      <a href="#experience" class="hover:text-white transition">Experience</a>
+      <a href="#projects" class="hover:text-white transition">Projects</a>
+      <a href="#contact" class="hover:text-white transition">Contact</a>
+    </div>
+    <a href="cv.pdf" download class="px-5 py-2 rounded-full bg-white text-ink-900 text-sm font-medium hover:bg-ink-100 transition flex items-center gap-2">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>
+      Resume
+    </a>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section id="home" class="relative min-h-screen flex items-center justify-center gradient-bg grid-pattern noise overflow-hidden">
+
+  <!-- Floating shapes -->
+  <div class="absolute top-1/4 left-10 w-20 h-20 rounded-full bg-brand-500/20 blur-2xl animate-float"></div>
+  <div class="absolute bottom-1/4 right-10 w-32 h-32 rounded-full bg-accent-500/20 blur-3xl animate-float" style="animation-delay: 2s;"></div>
+  <div class="absolute top-1/3 right-1/4 w-16 h-16 rounded-full bg-purple-500/20 blur-2xl animate-float" style="animation-delay: 4s;"></div>
+
+  <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+
+    <!-- Availability pill -->
+    <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8">
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+      </span>
+      <span class="text-sm text-ink-200">Available for new opportunities</span>
+    </div>
+
+    <!-- Name + title -->
+    <h1 class="reveal text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 text-balance" style="transition-delay: 0.1s;">
+      Hi, I'm <span class="gradient-text">Ravi Prakash</span>
+    </h1>
+
+    <p class="reveal text-xl md:text-2xl lg:text-3xl text-ink-300 mb-4 font-light text-balance" style="transition-delay: 0.2s;">
+      Senior Java + Liferay DXP Consultant
+    </p>
+
+    <p class="reveal text-base md:text-lg text-ink-400 mb-12 max-w-2xl mx-auto text-balance" style="transition-delay: 0.3s;">
+      6+ years building enterprise-grade <span class="text-brand-400">microservices</span>, <span class="text-accent-400">payment platforms</span>, and <span class="text-purple-400">portals</span> for BFSI, telecom, logistics, and government clients.
+    </p>
+
+    <!-- CTAs -->
+    <div class="reveal flex flex-col sm:flex-row gap-4 justify-center mb-16" style="transition-delay: 0.4s;">
+      <a href="#projects" class="px-8 py-4 rounded-full bg-gradient-to-r from-brand-500 to-accent-500 text-white font-medium glow hover:scale-105 transition-transform flex items-center justify-center gap-2">
+        View my work
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m0 0l-7-7m7 7l-7 7"/></svg>
+      </a>
+      <a href="#contact" class="px-8 py-4 rounded-full glass text-white font-medium hover:scale-105 transition-transform flex items-center justify-center gap-2">
+        Get in touch
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto" style="transition-delay: 0.5s;">
+      <div class="glass rounded-2xl p-5">
+        <div class="text-3xl md:text-4xl font-bold gradient-text mb-1" data-counter="6">0</div>
+        <div class="text-sm text-ink-400">Years experience</div>
+      </div>
+      <div class="glass rounded-2xl p-5">
+        <div class="text-3xl md:text-4xl font-bold gradient-text mb-1" data-counter="7">0</div>
+        <div class="text-sm text-ink-400">Marquee projects</div>
+      </div>
+      <div class="glass rounded-2xl p-5">
+        <div class="text-3xl md:text-4xl font-bold gradient-text mb-1" data-counter="5">0</div>
+        <div class="text-sm text-ink-400">Liferay certifications</div>
+      </div>
+      <div class="glass rounded-2xl p-5">
+        <div class="text-3xl md:text-4xl font-bold gradient-text mb-1"><span data-counter="10">0</span>K+</div>
+        <div class="text-sm text-ink-400">Customers served</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-ink-400">
+      <path d="M12 5v14m0 0l-7-7m7 7l7-7"/>
+    </svg>
+  </div>
+</section>
+
+<!-- Tech marquee -->
+<section class="py-12 overflow-hidden border-y border-ink-800 bg-ink-950">
+  <div class="flex marquee whitespace-nowrap">
+    <div class="flex gap-12 px-6 text-2xl text-ink-500 font-mono items-center shrink-0">
+      <span>Java 21</span><span class="text-ink-700">●</span>
+      <span>Spring Boot</span><span class="text-ink-700">●</span>
+      <span>Microservices</span><span class="text-ink-700">●</span>
+      <span>Liferay DXP</span><span class="text-ink-700">●</span>
+      <span>React</span><span class="text-ink-700">●</span>
+      <span>REST APIs</span><span class="text-ink-700">●</span>
+      <span>OSGi</span><span class="text-ink-700">●</span>
+      <span>Payment Gateway</span><span class="text-ink-700">●</span>
+      <span>Event-Driven</span><span class="text-ink-700">●</span>
+      <span>Spring MVC</span><span class="text-ink-700">●</span>
+    </div>
+    <div class="flex gap-12 px-6 text-2xl text-ink-500 font-mono items-center shrink-0" aria-hidden="true">
+      <span>Java 21</span><span class="text-ink-700">●</span>
+      <span>Spring Boot</span><span class="text-ink-700">●</span>
+      <span>Microservices</span><span class="text-ink-700">●</span>
+      <span>Liferay DXP</span><span class="text-ink-700">●</span>
+      <span>React</span><span class="text-ink-700">●</span>
+      <span>REST APIs</span><span class="text-ink-700">●</span>
+      <span>OSGi</span><span class="text-ink-700">●</span>
+      <span>Payment Gateway</span><span class="text-ink-700">●</span>
+      <span>Event-Driven</span><span class="text-ink-700">●</span>
+      <span>Spring MVC</span><span class="text-ink-700">●</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about" class="relative py-24 md:py-32">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="reveal">
+      <div class="text-sm font-mono text-brand-400 mb-3">// About me</div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-12 text-balance">A senior engineer who's<br>grown from intern to consultant<br>at a <span class="gradient-text">global product company.</span></h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12">
+      <div class="reveal space-y-5 text-ink-300 leading-relaxed">
+        <p>I'm a Senior Software Consultant at <span class="text-white font-medium">Liferay, Inc.</span> — a US-headquartered enterprise product company. Over 6+ years I've progressed from Intern → Associate Consultant → Consultant, consistently promoted for technical depth, ownership, and client delivery.</p>
+        <p>My day-to-day spans designing Java + Spring Boot microservices and REST APIs, building Liferay DXP 7.4+ portal customizations using Objects, Workflows, and Client Extensions, and engaging directly with high-profile stakeholders — including <span class="text-accent-400">PMO offices</span> and <span class="text-accent-400">Government of Brunei</span> representatives.</p>
+        <p>I love hard problems — payment gateway integrations, event-driven pipelines, high-traffic systems under peak load, and modernization of legacy stacks to Java 21 with virtual threads.</p>
+      </div>
+
+      <div class="reveal grid grid-cols-2 gap-4" style="transition-delay: 0.2s;">
+        <div class="glass rounded-2xl p-5">
+          <div class="text-brand-400 mb-2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="font-medium mb-1">Backend Architect</div>
+          <div class="text-sm text-ink-400">Microservices, REST, event-driven</div>
+        </div>
+        <div class="glass rounded-2xl p-5">
+          <div class="text-accent-400 mb-2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+          </div>
+          <div class="font-medium mb-1">Liferay DXP Expert</div>
+          <div class="text-sm text-ink-400">Objects, Workflows, Headless</div>
+        </div>
+        <div class="glass rounded-2xl p-5">
+          <div class="text-purple-400 mb-2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="font-medium mb-1">Performance Tuner</div>
+          <div class="text-sm text-ink-400">JVM, GC, caching, indexes</div>
+        </div>
+        <div class="glass rounded-2xl p-5">
+          <div class="text-emerald-400 mb-2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div class="font-medium mb-1">Client Engager</div>
+          <div class="text-sm text-ink-400">PMO, Brunei Govt, BFSI</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS SECTION -->
+<section id="skills" class="relative py-24 md:py-32 border-t border-ink-800">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="reveal text-center mb-16">
+      <div class="text-sm font-mono text-brand-400 mb-3">// Tech stack</div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-balance">What I <span class="gradient-text">work with</span></h2>
+      <p class="text-ink-400 max-w-2xl mx-auto">Modern Java, Spring Boot microservices, Liferay DXP, and the ecosystem around them.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <div class="reveal skill-card glass rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-brand-500/20 flex items-center justify-center text-brand-400">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z M3 9h18 M9 21V9"/></svg>
+          </div>
+          <div class="font-semibold">Languages</div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Java 8</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Java 11</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Java 17</span>
+          <span class="px-3 py-1 rounded-full bg-brand-500/20 text-xs text-brand-300 border border-brand-500/30">Java 21</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">JavaScript</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">SQL</span>
+        </div>
+      </div>
+
+      <div class="reveal skill-card glass rounded-2xl p-6" style="transition-delay: 0.1s;">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-accent-500/20 flex items-center justify-center text-accent-400">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+          </div>
+          <div class="font-semibold">Frameworks</div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 rounded-full bg-accent-500/20 text-xs text-accent-300 border border-accent-500/30">Spring Boot</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Spring MVC</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Spring Security</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Hibernate</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">JPA</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">React.js</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">jQuery</span>
+        </div>
+      </div>
+
+      <div class="reveal skill-card glass rounded-2xl p-6" style="transition-delay: 0.2s;">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </div>
+          <div class="font-semibold">Liferay DXP</div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 rounded-full bg-purple-500/20 text-xs text-purple-300 border border-purple-500/30">DXP 7.4+</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Objects</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Object Actions</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Workflows</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Client Extensions</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">OSGi Modules</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Headless APIs</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Service Builder</span>
+        </div>
+      </div>
+
+      <div class="reveal skill-card glass rounded-2xl p-6" style="transition-delay: 0.3s;">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M6 9v3a3 3 0 003 3h6a3 3 0 003-3V9"/></svg>
+          </div>
+          <div class="font-semibold">Architecture</div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-xs text-emerald-300 border border-emerald-500/30">Microservices</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">REST APIs</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Event-Driven</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Payment Gateway</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">SOAP</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Headless CMS</span>
+        </div>
+      </div>
+
+      <div class="reveal skill-card glass rounded-2xl p-6" style="transition-delay: 0.4s;">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-pink-500/20 flex items-center justify-center text-pink-400">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0018 0V5 M3 12a9 3 0 0018 0"/></svg>
+          </div>
+          <div class="font-semibold">Databases</div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">MySQL</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Oracle DB</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">PostgreSQL</span>
+        </div>
+      </div>
+
+      <div class="reveal skill-card glass rounded-2xl p-6" style="transition-delay: 0.5s;">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <div class="font-semibold">Tools & DevOps</div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Git</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Maven</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Gradle</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">IntelliJ</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Postman</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Swagger</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">JIRA</span>
+          <span class="px-3 py-1 rounded-full bg-ink-800 text-xs text-ink-200">Linux</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE TIMELINE -->
+<section id="experience" class="relative py-24 md:py-32 border-t border-ink-800">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="reveal text-center mb-16">
+      <div class="text-sm font-mono text-brand-400 mb-3">// Career journey</div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-balance">From <span class="gradient-text">intern to consultant</span><br>in 6 years.</h2>
+      <p class="text-ink-400">Every promotion earned on technical depth and ownership.</p>
+    </div>
+
+    <div class="relative">
+      <!-- Vertical line -->
+      <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-brand-500 via-accent-500 to-purple-500 -translate-x-1/2"></div>
+
+      <div class="space-y-12">
+
+        <!-- Consultant -->
+        <div class="reveal relative md:grid md:grid-cols-2 gap-8 items-center">
+          <div class="md:text-right md:pr-12 pl-12 md:pl-0">
+            <div class="text-sm font-mono text-brand-400 mb-2">2023 — Present</div>
+            <h3 class="text-2xl font-bold mb-2">Consultant</h3>
+            <div class="text-ink-300 mb-3">Liferay, Inc.</div>
+            <p class="text-sm text-ink-400 leading-relaxed">Own end-to-end Java + Spring Boot microservices and Liferay DXP 7.4+ delivery for enterprise clients. Engage directly with PMO and Brunei Government stakeholders.</p>
+          </div>
+          <div class="absolute left-4 md:left-1/2 top-2 w-4 h-4 rounded-full bg-brand-500 -translate-x-1/2 glow"></div>
+          <div class="hidden md:block"></div>
+        </div>
+
+        <!-- Associate Consultant -->
+        <div class="reveal relative md:grid md:grid-cols-2 gap-8 items-center" style="transition-delay: 0.1s;">
+          <div class="hidden md:block"></div>
+          <div class="absolute left-4 md:left-1/2 top-2 w-4 h-4 rounded-full bg-accent-500 -translate-x-1/2 glow-cyan"></div>
+          <div class="md:pl-12 pl-12">
+            <div class="text-sm font-mono text-accent-400 mb-2">2021 — 2023</div>
+            <h3 class="text-2xl font-bold mb-2">Associate Consultant</h3>
+            <div class="text-ink-300 mb-3">Liferay, Inc.</div>
+            <p class="text-sm text-ink-400 leading-relaxed">Built Java + Spring Boot microservices, REST APIs, OSGi modules, and Service Builder entities. Upgraded legacy systems from Java 8/11 to Java 17/21.</p>
+          </div>
+        </div>
+
+        <!-- Intern -->
+        <div class="reveal relative md:grid md:grid-cols-2 gap-8 items-center" style="transition-delay: 0.2s;">
+          <div class="md:text-right md:pr-12 pl-12 md:pl-0">
+            <div class="text-sm font-mono text-purple-400 mb-2">2020 — 2021</div>
+            <h3 class="text-2xl font-bold mb-2">Intern</h3>
+            <div class="text-ink-300 mb-3">Liferay, Inc.</div>
+            <p class="text-sm text-ink-400 leading-relaxed">Trained on Java, Spring MVC, and Liferay DXP. Built POCs and a custom gradebook module. Earned full-time offer on completion.</p>
+          </div>
+          <div class="absolute left-4 md:left-1/2 top-2 w-4 h-4 rounded-full bg-purple-500 -translate-x-1/2"></div>
+          <div class="hidden md:block"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS SECTION -->
+<section id="projects" class="relative py-24 md:py-32 border-t border-ink-800">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="reveal text-center mb-16">
+      <div class="text-sm font-mono text-brand-400 mb-3">// Selected work</div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-balance">Projects I've <span class="gradient-text">shipped</span></h2>
+      <p class="text-ink-400 max-w-2xl mx-auto">Enterprise systems across BFSI, telecom, logistics, manufacturing, and government.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <article class="reveal project-card glass rounded-3xl p-8 group">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 flex items-center justify-center text-emerald-400">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20 M6 15h2"/></svg>
+          </div>
+          <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Payments</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2 group-hover:text-emerald-400 transition">Panasonic B2B Portal</h3>
+        <p class="text-ink-400 text-sm mb-4 leading-relaxed">End-to-end Payment Gateway Integration with Spring Boot microservices — secure transaction flows, idempotent request handling, webhook security, and daily reconciliation enabling online B2B commerce at scale.</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">Java 17</span>
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">Spring Boot</span>
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">OSGi</span>
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">Oracle</span>
+        </div>
+        <div class="text-xs text-ink-500 font-mono">Manufacturing · B2B</div>
+      </article>
+
+      <article class="reveal project-card glass rounded-3xl p-8 group" style="transition-delay: 0.1s;">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500/20 to-purple-600/20 flex items-center justify-center text-purple-400">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20 M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <span class="text-xs px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20">Event-driven</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2 group-hover:text-purple-400 transition">ETDS — Income Tax Dept</h3>
+        <p class="text-ink-400 text-sm mb-4 leading-relaxed">Event-driven newsletter subscription pipeline using Liferay Objects for subscriber data, Object Actions triggering Spring Boot microservices, and a React.js Client Extension for the subscribe UX.</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">Java 21</span>
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">Spring Boot</span>
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">Liferay 7.4+</span>
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">React.js</span>
+        </div>
+        <div class="text-xs text-ink-500 font-mono">Government · Citizen Services</div>
+      </article>
+
+      <article class="reveal project-card glass rounded-3xl p-8 group" style="transition-delay: 0.2s;">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500/20 to-amber-600/20 flex items-center justify-center text-amber-400">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <span class="text-xs px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20">High-traffic</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2 group-hover:text-amber-400 transition">Blue Dart Logistics</h3>
+        <p class="text-ink-400 text-sm mb-4 leading-relaxed">High-traffic customer-facing logistics portal — tuned JVM, GC strategy, caching, DB indexes, and query layers to maintain stable P95 response times under peak shipment-tracking load.</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">Java 8/11</span>
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">Spring Boot</span>
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">MySQL</span>
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">Liferay 7.4</span>
+        </div>
+        <div class="text-xs text-ink-500 font-mono">Logistics · High-traffic</div>
+      </article>
+
+      <article class="reveal project-card glass rounded-3xl p-8 group" style="transition-delay: 0.3s;">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500/20 to-pink-600/20 flex items-center justify-center text-pink-400">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h14a2 2 0 012 2v4M5 4a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2v-2M5 4v16 M14 11h7M17 8l3 3-3 3"/></svg>
+          </div>
+          <span class="text-xs px-3 py-1 rounded-full bg-pink-500/10 text-pink-300 border border-pink-500/20">Telecom</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2 group-hover:text-pink-400 transition">Vodafone Idea (VIL)</h3>
+        <p class="text-ink-400 text-sm mb-4 leading-relaxed">Customer self-service portal — complex telecom business logic for billing, plan management, account/profile management, and coupon flows; integrated with external billing and CRM systems through REST APIs.</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">Java</span>
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">Spring Boot</span>
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">REST APIs</span>
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">Liferay DXP</span>
+        </div>
+        <div class="text-xs text-ink-500 font-mono">Telecom · Self-Service</div>
+      </article>
+
+      <article class="reveal project-card glass rounded-3xl p-8 group" style="transition-delay: 0.4s;">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-500/20 to-brand-600/20 flex items-center justify-center text-brand-400">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z M9 22V12h6v10"/></svg>
+          </div>
+          <span class="text-xs px-3 py-1 rounded-full bg-brand-500/10 text-brand-300 border border-brand-500/20">BFSI</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2 group-hover:text-brand-400 transition">Edelweiss Insurance</h3>
+        <p class="text-ink-400 text-sm mb-4 leading-relaxed">Multi-product insurance portal — Spring MVC service layers and REST API integrations with third-party financial systems for term, health, ULIP, and motor product lines, with interactive premium calculators.</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">Java 11</span>
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">Spring MVC</span>
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">jQuery</span>
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">MySQL</span>
+        </div>
+        <div class="text-xs text-ink-500 font-mono">BFSI · Insurance</div>
+      </article>
+
+      <article class="reveal project-card glass rounded-3xl p-8 group" style="transition-delay: 0.5s;">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent-500/20 to-accent-600/20 flex items-center justify-center text-accent-400">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <span class="text-xs px-3 py-1 rounded-full bg-accent-500/10 text-accent-300 border border-accent-500/20">Govt · PMO</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2 group-hover:text-accent-400 transition">JCB — Job Portal</h3>
+        <p class="text-ink-400 text-sm mb-4 leading-relaxed">Naukri-style job portal with direct stakeholder engagement — PMO offices and Government of Brunei. Built end-to-end job posting, candidate registration, search, and application tracking on OSGi portlets.</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">Java</span>
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">Service Builder</span>
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">MySQL</span>
+          <span class="text-xs px-2 py-1 rounded bg-ink-800 text-ink-300 font-mono">Liferay 7.2</span>
+        </div>
+        <div class="text-xs text-ink-500 font-mono">Manufacturing · Government</div>
+      </article>
+
+    </div>
+
+    <!-- Additional projects -->
+    <div class="reveal mt-8 glass rounded-2xl p-6 text-center">
+      <div class="text-sm text-ink-400 mb-2">Also delivered:</div>
+      <div class="flex flex-wrap gap-3 justify-center text-sm">
+        <span class="text-ink-200"><span class="text-brand-400">Pidilite</span> · Dealer & Distribution Portal</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="relative py-24 md:py-32 border-t border-ink-800">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="reveal text-center mb-16">
+      <div class="text-sm font-mono text-brand-400 mb-3">// Credentials</div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-balance"><span class="gradient-text">Certified</span> & accredited</h2>
+      <p class="text-ink-400">Five Liferay certifications across the full DXP stack.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="reveal glass rounded-2xl p-6 flex items-center gap-4 skill-card">
+        <div class="w-12 h-12 rounded-xl bg-brand-500/20 flex items-center justify-center text-brand-400 flex-shrink-0">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg>
+        </div>
+        <div>
+          <div class="font-semibold">Liferay 7.4</div>
+          <div class="text-sm text-ink-400">Application Developer</div>
+        </div>
+      </div>
+
+      <div class="reveal glass rounded-2xl p-6 flex items-center gap-4 skill-card" style="transition-delay: 0.1s;">
+        <div class="w-12 h-12 rounded-xl bg-accent-500/20 flex items-center justify-center text-accent-400 flex-shrink-0">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg>
+        </div>
+        <div>
+          <div class="font-semibold">Liferay 7.4</div>
+          <div class="text-sm text-ink-400">Back-End Developer</div>
+        </div>
+      </div>
+
+      <div class="reveal glass rounded-2xl p-6 flex items-center gap-4 skill-card" style="transition-delay: 0.2s;">
+        <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 flex-shrink-0">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg>
+        </div>
+        <div>
+          <div class="font-semibold">Liferay 7.4</div>
+          <div class="text-sm text-ink-400">Front-End Developer</div>
+        </div>
+      </div>
+
+      <div class="reveal glass rounded-2xl p-6 flex items-center gap-4 skill-card" style="transition-delay: 0.3s;">
+        <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 flex-shrink-0">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg>
+        </div>
+        <div>
+          <div class="font-semibold">Liferay LCPD</div>
+          <div class="text-sm text-ink-400">Certified Professional Developer</div>
+        </div>
+      </div>
+
+      <div class="reveal glass rounded-2xl p-6 flex items-center gap-4 skill-card" style="transition-delay: 0.4s;">
+        <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center text-pink-400 flex-shrink-0">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg>
+        </div>
+        <div>
+          <div class="font-semibold">BEWL</div>
+          <div class="text-sm text-ink-400">Backend Enterprise Website with Liferay</div>
+        </div>
+      </div>
+
+      <div class="reveal glass rounded-2xl p-6 flex items-center gap-4 skill-card" style="transition-delay: 0.5s;">
+        <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-400 flex-shrink-0">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div>
+          <div class="font-semibold">B.Tech CSE</div>
+          <div class="text-sm text-ink-400">GIET University · 2020</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="relative py-24 md:py-32 border-t border-ink-800 gradient-bg overflow-hidden">
+
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl"></div>
+
+  <div class="relative max-w-3xl mx-auto px-6 text-center">
+    <div class="reveal">
+      <div class="text-sm font-mono text-brand-400 mb-3">// Let's connect</div>
+      <h2 class="text-4xl md:text-6xl font-bold mb-6 text-balance">Building something <span class="gradient-text">interesting</span>?</h2>
+      <p class="text-xl text-ink-300 mb-12 max-w-xl mx-auto">I'm open to Senior Java / Spring Boot / Microservices and Liferay DXP roles. Let's talk.</p>
+    </div>
+
+    <div class="reveal grid sm:grid-cols-2 gap-4 mb-12" style="transition-delay: 0.2s;">
+      <a href="mailto:coolraviprakash156@gmail.com" class="glass rounded-2xl p-6 flex items-center gap-4 hover:border-brand-500/50 transition skill-card">
+        <div class="w-12 h-12 rounded-xl bg-brand-500/20 flex items-center justify-center text-brand-400">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="text-left">
+          <div class="text-sm text-ink-400">Email</div>
+          <div class="font-medium text-sm break-all">coolraviprakash156@gmail.com</div>
+        </div>
+      </a>
+
+      <a href="tel:+918507661455" class="glass rounded-2xl p-6 flex items-center gap-4 hover:border-accent-500/50 transition skill-card">
+        <div class="w-12 h-12 rounded-xl bg-accent-500/20 flex items-center justify-center text-accent-400">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div class="text-left">
+          <div class="text-sm text-ink-400">Phone</div>
+          <div class="font-medium">+91 8507661455</div>
+        </div>
+      </a>
+
+      <a href="https://linkedin.com/in/ravi-prakash-422374152" target="_blank" rel="noopener" class="glass rounded-2xl p-6 flex items-center gap-4 hover:border-purple-500/50 transition skill-card">
+        <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+        </div>
+        <div class="text-left">
+          <div class="text-sm text-ink-400">LinkedIn</div>
+          <div class="font-medium">/in/ravi-prakash-422374152</div>
+        </div>
+      </a>
+
+      <a href="cv.pdf" download class="glass rounded-2xl p-6 flex items-center gap-4 hover:border-emerald-500/50 transition skill-card">
+        <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        </div>
+        <div class="text-left">
+          <div class="text-sm text-ink-400">Resume</div>
+          <div class="font-medium">Download PDF</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="reveal" style="transition-delay: 0.4s;">
+      <a href="mailto:coolraviprakash156@gmail.com" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-brand-500 to-accent-500 text-white font-medium glow hover:scale-105 transition-transform">
+        Start a conversation
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m0 0l-7-7m7 7l-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-ink-800 py-12">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 flex items-center justify-center text-white font-black text-sm">RP</div>
+        <div>
+          <div class="font-medium">Ravi Prakash</div>
+          <div class="text-xs text-ink-500">Senior Java + Liferay DXP Consultant</div>
+        </div>
+      </div>
+      <div class="text-sm text-ink-500">© 2026 Ravi Prakash. Built with care.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+  // Animated counters
+  const counters = document.querySelectorAll('[data-counter]');
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.counter);
+        let current = 0;
+        const step = target / 30;
+        const update = () => {
+          current += step;
+          if (current < target) {
+            el.textContent = Math.floor(current) + (target >= 6 ? '+' : '');
+            requestAnimationFrame(update);
+          } else {
+            el.textContent = target + '+';
+          }
+        };
+        update();
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach((el) => counterObserver.observe(el));
+
+  // Navbar scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      nav.classList.add('bg-ink-950/80', 'backdrop-blur-xl', 'border-b', 'border-ink-800');
+    } else {
+      nav.classList.remove('bg-ink-950/80', 'backdrop-blur-xl', 'border-b', 'border-ink-800');
+    }
+  });
+</script>
+
+</body>
+</html>
